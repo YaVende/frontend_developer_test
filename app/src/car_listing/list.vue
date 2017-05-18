@@ -5,7 +5,7 @@
         legend Marca
         select(
           v-model='carBrandId'
-          v-on:change='getCarListings(); getCarModels()'
+          v-on:change='onCarBrandIdChange()'
         )
           option(
             v-for='cb in carBrands'
@@ -17,7 +17,7 @@
         legend Modelo
         select(
           v-model='carModelId'
-          v-on:change='getCarListings()'
+          v-on:change='onCarModelIdChange()'
         )
           option(
             v-for='cm in carModels'
@@ -99,6 +99,17 @@
         CarModel
           .query({params})
           .then(resp => this.carModels = resp.data.car_models)
+      },
+
+      onCarBrandIdChange() {
+        this.page = 1;
+        this.getCarListings()
+        this.getCarModels()
+      },
+
+      onCarModelIdChange() {
+        this.page = 1;
+        this.getCarListings();
       }
     }
   }
