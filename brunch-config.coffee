@@ -28,7 +28,10 @@ module.exports =
       compress: true
     babel:
       presets: ["es2015", "es2016", "es2017"]
-      plugins: ["transform-class-properties"]
+      plugins: [
+        "transform-class-properties",
+        "transform-object-rest-spread"
+      ]
     stylus:
       plugins: ['autoprefixer-stylus']
 
