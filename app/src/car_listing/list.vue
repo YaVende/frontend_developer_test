@@ -82,6 +82,7 @@
 
         CarListing
           .query({params})
+          .then(resp => { debugger; return resp })
           .then(resp => this.carListings = resp.data);
       },
 

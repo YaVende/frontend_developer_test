@@ -13,11 +13,11 @@ module.exports = {
 
     const carListings =
       browser.globals.apiMock
-        .getJson('car_listings_index_page_1.json');
+        .readJson('car_listings_index_page_1.json');
 
     checkContainsCarListings(browser, carListings);
 
-    return browser;
+    return browser.end();
   },
 
 
@@ -28,15 +28,15 @@ module.exports = {
       .click('#car-brand-select')
       .waitForElementVisible('#car-brand-select option[value="45"]', 3000)
       .click('#car-brand-select option[value="45"]')
-      .pause(3000)
+      .pause(4000)
 
     const carListings =
       browser.globals.apiMock
-        .getJson('car_listings_index_car_brand_id_45.json');
+        .readJson('car_listings_index_car_brand_id_45.json');
 
     checkContainsCarListings(browser, carListings);
 
-    return browser;
+    return browser.end();
   }
 };
 

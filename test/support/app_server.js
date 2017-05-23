@@ -2,8 +2,9 @@ const spawn = require('threads').spawn;
 
 module.exports = {
   start() {
-    console.log("App server: STARTING");
+    process.env.DEBUG_MODE && console.log("App server: STARTING");
 
+    process.env.PUBLIC_DIR = "./test/public";
     process.env.API_URL = "http://localhost:1234";
 
     return new Promise((fulfill, reject) =>
@@ -21,17 +22,17 @@ module.exports = {
           .on('error', reject)
           .send()
     )
-      .then(_ => console.log("App server: STARTED"))
+      .then(_ => process.env.DEBUG_MODE && console.log("App server: STARTED"))
       .catch(error => {
-        console.log(`App server: ERROR: ${error}`);
+        process.env.DEBUG_MODE && console.log(`App server: ERROR: ${error}`);
         return Promise.reject(error);
       });
   },
 
   stop() {
-    console.log("App server: STOPPING");
+    process.env.DEBUG_MODE && console.log("App server: STOPPING");
     this.childProcess && this.childProcess.kill();
-    console.log("App server: STOPPED");
+    process.env.DEBUG_MODE && console.log("App server: STOPPED");
     return Promise.resolve();
   }
 };

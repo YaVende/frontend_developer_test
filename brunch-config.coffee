@@ -1,6 +1,7 @@
 module.exports =
   paths:
-    public: process.env.PUBLIC_DIR || './public'
+    public: process.env.PUBLIC_DIR || './public',
+    watched: ['app']
 
   files:
     javascripts:

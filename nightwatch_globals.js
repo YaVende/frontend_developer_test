@@ -10,7 +10,8 @@ module.exports = {
       Promise
         .all([
           apiMock.start(),
-          selenium.start()
+          selenium.start(),
+          appServer.start()
         ])
         .then(done)
         .catch(_ => done(...arguments));
@@ -20,7 +21,8 @@ module.exports = {
       Promise
         .all([
           apiMock.stop(),
-          selenium.stop()
+          selenium.stop(),
+          appServer.stop()
         ])
         .then(done)
         .catch(_ => done(...arguments));
