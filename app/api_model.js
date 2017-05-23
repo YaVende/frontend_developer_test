@@ -28,6 +28,8 @@ class ApiModel {
   }
 }
 
-ApiModel.configurate({apiUrl: "https://api.yavende.com"});
+ApiModel.configurate({
+  apiUrl: $PROCESS_ENV_API_URL || "https://api.yavende.com"
+});
 
 export default ApiModel;

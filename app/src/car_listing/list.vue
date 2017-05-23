@@ -3,7 +3,7 @@
     .car-listing-list__header
       div
         legend Marca
-        select(
+        select#car-brand-select(
           v-model='carBrandId'
           v-on:change='onCarBrandIdChange()'
         )
@@ -15,7 +15,7 @@
 
       div
         legend Modelo
-        select(
+        select#car-model-select(
           v-model='carModelId'
           v-on:change='onCarModelIdChange()'
         )
