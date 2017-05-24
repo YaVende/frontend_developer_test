@@ -10,10 +10,9 @@ module.exports =
 
     .on({
       path: '/car_models',
-      matchParams: [{
-        params: {car_brand_id: "45"},
-        jsonFile: 'car_models_index_car_brand_id_45.json'
-      }]
+      matcher: req =>
+        req.query.car_brand_id === "45" &&
+        'car_models_index_car_brand_id_45.json'
     })
 
     .on({

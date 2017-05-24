@@ -39,7 +39,16 @@ module.exports = class CustomServerMock {
         body: req => {
           if (matcher) jsonFile = matcher(req);
           if (!jsonFile) throw(`Api Mock: Error: No match for path ${path}`);
-          if (process.env.DEBUG_MODE) console.log(`Api Mock: responding to path ${path} with json file ${jsonFile}`);
+
+          if (process.env.DEBUG_MODE) {
+            const queryDesc =
+              _.keys(req.query)
+                .map(k => [k, req.query[k]].join('='))
+                .join(', ')
+
+            console.log(`Api Mock: responding to path ${path} and query ${queryDesc} with json file ${jsonFile}`);
+          }
+
           return this.readJsonAsString(jsonFile);
         }
       }
