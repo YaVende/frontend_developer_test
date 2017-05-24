@@ -25,7 +25,7 @@
             :value='cm.id'
           )
 
-      button(v-on:click='getNextPage()') Próxima página
+      button#next-page-button(v-on:click='getNextPage()') Próxima página
 
     hr
 
@@ -34,6 +34,7 @@
         v-if='carListings'
         v-for='cl in carListings'
         v-on:click='$router.push({name: "carListings.show", params:{id: cl.id}})'
+        :id="'car-listing-card-' + cl.id"
       )
         .car-listing-card__header Aviso \#{{ cl.id }}
         .car-listing-card__body
@@ -82,7 +83,6 @@
 
         CarListing
           .query({params})
-          .then(resp => { debugger; return resp })
           .then(resp => this.carListings = resp.data);
       },
 

@@ -1,3 +1,6 @@
+// Tests wether the page contains the text of given carListings props
+// Default props to look for are defined by DEFAULT_PROPS_TO_TEST,
+// so they could easily be customized or passed as arguments to the assertion.
 const _ = require('lodash');
 
 const DEFAULT_PROPS_TO_TEST = [{

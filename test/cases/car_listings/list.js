@@ -35,9 +35,22 @@ module.exports = {
       .end();
   },
 
-  //'/avisos should redurirect to /avisos/:id when I click on a car listing': browser => {
-    //browser
-      //.pause()
-      //.end();
-  //}
+  '/avisos should redirect to /avisos/:id when I click on a car listing': browser => {
+    browser
+      .click("#car-listing-card-5792")
+      .assert.urlEquals(`${browser.launchUrl}/avisos/5792`)
+      .end();
+  },
+
+  '/avisos should allow pagination using a button': browser => {
+    const carListings = browser.globals.apiMock
+      .readJson('car_listings_index_page_2');
+
+    browser
+      .waitForElementVisible('#next-page-button', 3000)
+      .click('#next-page-button')
+      .pause(3000)
+      .assert.containsCarListings('body', carListings)
+      .end();
+  },
 };
