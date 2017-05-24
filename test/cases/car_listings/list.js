@@ -5,9 +5,8 @@ module.exports = {
     browser.url(`${browser.launchUrl}/avisos`, done),
 
   '/avisos should display first 8 cars from carListings index': browser => {
-    const carListings =
-      browser.globals.apiMock
-        .readJson('car_listings_index_page_1.json');
+    const carListings = browser.globals.apiMock
+      .readJson('car_listings_index_page_1');
 
     browser
       .pause(3000)
@@ -16,9 +15,8 @@ module.exports = {
   },
 
   '/avisos should allow filtering by brand': browser => {
-    const carListings =
-      browser.globals.apiMock
-        .readJson('car_listings_index_car_brand_id_45.json');
+    const carListings = browser.globals.apiMock
+      .readJson('car_listings_index_car_brand_id_45');
 
     browser
       .selectOption('#car-brand-select', 45)
@@ -27,14 +25,19 @@ module.exports = {
   },
 
   '/avisos should allow filtering by brand and model': browser => {
-    const carListings =
-      browser.globals.apiMock
-        .readJson('car_listings_index_car_brand_id_45_car_model_id_674.json');
+    const carListings = browser.globals.apiMock
+      .readJson('car_listings_index_car_brand_id_45_car_model_id_674');
 
     browser
       .selectOption('#car-brand-select', 45)
       .selectOption('#car-model-select', 674)
       .assert.containsCarListings('body', carListings)
       .end();
-  }
+  },
+
+  //'/avisos should redurirect to /avisos/:id when I click on a car listing': browser => {
+    //browser
+      //.pause()
+      //.end();
+  //}
 };

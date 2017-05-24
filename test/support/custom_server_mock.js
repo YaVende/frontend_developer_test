@@ -58,7 +58,7 @@ module.exports = class CustomServerMock {
   }
 
   readJsonAsString(fileName) {
-    const filePath = path.join(__dirname, 'mocked_data', `${fileName}`);
+    const filePath = path.join(__dirname, 'mocked_data', `${fileName}.json`);
     return fs.readFileSync(filePath, 'utf-8');
   }
 
