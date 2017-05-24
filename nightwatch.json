@@ -1,7 +1,8 @@
 {
   "src_folders": ["test/cases"],
   "output_folder": "test/reports",
-  "globals_path": "nightwatch_globals.js",
+  "globals_path": "test/nightwatch/globals.js",
+  "custom_assertions_path": "test/nightwatch/assertions",
   "persist_globals": true,
   "test_settings": {
     "default": {
