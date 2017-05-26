@@ -2,7 +2,7 @@
 
 module.exports = {
   beforeEach: (browser, done) =>
-    browser.url(`${browser.launchUrl}/avisos`, done),
+    browser.url(`${browser.globals.launchUrl}/avisos`, done),
 
   '/avisos should display first 8 cars from carListings index': browser => {
     const carListings = browser.globals.apiMock
@@ -38,7 +38,7 @@ module.exports = {
   '/avisos should redirect to /avisos/:id when I click on a car listing': browser => {
     browser
       .click("#car-listing-card-5792")
-      .assert.urlEquals(`${browser.launchUrl}/avisos/5792`)
+      .assert.urlEquals(`${browser.globals.launchUrl}/avisos/5792`)
       .end();
   },
 

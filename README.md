@@ -65,34 +65,21 @@ Your app must serve this routes:
   - **Should be navigatable**: If I open the browser directly on /avisos/:id, the detail for the carListing with that id should be shown.
     You must show the car listing's id, image, brand, model, year.
 
-You also most enforce this points:
+You also must enforce this points:
 
   1. **The page must be a [single page application][109]:**
     This means the page may consist on a single file index.html,
     and clicking a link muest not trigger a page reload.
     Instead, all data needed to render the must be loaded via AJAX and used to update the page.
 
-  2. **Your page must be executable**
-    The tests expects you app to be buildable and servable using a command using env variable `APP_COMMAND`, for example: ´gulp build serve´.
-    If you use this skeleton, the build command defaults to `API_URL=http://localhost:1234 brunch watch --server`.
-    If don't use or know any suitable framework for doing this, or don't like Brunch, take a look at this simple library/cli_tool for serving static files: https://www.npmjs.com/package/node-static.
-
-  4. **The url for the backend API should be easily configured:**
-    For testing purposes. We expect your build/serve command (described in point 3) to use the env variable "API_URL".
-    This allows us to run your app against a mocked api instance for test.
-    If you use this skeleton app, ]this package is installed][10] and allows to use use env vars just by preceding their names with "$$PROCESS_ENV_", like `$$PROCESS_ENV_API_URL`.
-    Otherwise, you can easily replace the API_URL in a source file using bash command line tool [envsubst][11].
-
-  5. **Tests must pass:**
+  2. **Tests must pass:**
     If your site fulfills the requirements, automated tests should pass.
     If you feel like you completed the requirements but tests don't give you the green light,
     feel free to edit the tests, open an issue, or even [email us](mailto:nicolas@yavende.com).
 
 ## Support and documentation
 
-We will soon document our API with swag...
-
-... I mean http://swagger.io/.
+We will soon document our API with swaggger.io/.
 
 
  
@@ -110,13 +97,29 @@ We will soon document our API with swag...
     * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
 
 ## Running tests
-Ensure you have installed [nightwatch.js][3]:
+Ensure you have installed [nightwatch.js][3].
+
+Before running the tests, replace the API base url on your source files from `https://api.yavende.com` to `http://localhost:1234`.
+This is a mocked service that mimics our API for testing.
+
+### Using brunch built in static server
+The test suite will try to run the brunch server by default and perform the automated tests against that server that runs on localhost:3333.
 
 ~~~bash
 $ # run the tets
 $ nightwatch
-$ # Configrate your app host. Defaults to brunchs http://localhost:3333
-$ APP_HOST=http://localhost:9876 nightwatch
+~~~
+
+The test runner will run the brunch compile and server command `brunch watch --server` with the env var `API_URL` set to `http://localhost:1234`.
+The brunch app comes with [process-env-brunch](https://github.com/mikeedwards/process-env-brunch) plugin installed, so the env var `API_URL` be replaced.
+
+### Using a custom server
+If you decide not to go with brunch, pass `DISABLE_APP_SERVER=true` and `APP_HOST=http://localhost:<your_port>` to tell the test suite where to run the tests against.
+Here is a simple example of running a static assets server using nodejs [node-static][6]:
+
+~~~bash
+$ static --spa -a 0.0.0.0 ./public
+$ DISABLE_APP_SERVER=true APP_HOST=http://localhost:8080 nightwatch
 ~~~
 
 As mentioned before, ***tests should pass***.
@@ -129,6 +132,7 @@ feel free to edit the tests, open an issue, or even [email us](mailto:nicolas@ya
 [3]: http://nightwatchjs.org
 [4]: https://github.com/mikeedwards/process-env-brunch
 [5]: https://stackoverflow.com/questions/14155596/how-to-substitute-shell-variables-in-complex-text-files/21265156#21265156
+[6]: https://github.com/cloudhead/node-static
 
 [104]: https://api.yavende.com/v1/car_listings
 [105]: https://api.yavende.com/v1/car_listings?page=2
@@ -137,7 +141,3 @@ feel free to edit the tests, open an issue, or even [email us](mailto:nicolas@ya
 [108]: https://api.yavende.com/car_models?car_brand=45
 [109]: https://en.wikipedia.org/wiki/Single-page_application
 [110]: https://api.yavende.com/v1/car_listings?car_brand_id=45?car_model_id=674
-
-## Good luck!
-
-![](http://angriestprogrammer.com/comics/panaceajs.png)

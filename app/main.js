@@ -4,6 +4,7 @@ Vue.use(VueRouter);
 import 'dependency_manifest';
 
 import App from 'src/app.vue';
+
 import CarListingList from 'src/car_listing/list.vue';
 import CarListingDetail from 'src/car_listing/detail.vue';
 

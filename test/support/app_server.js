@@ -4,8 +4,8 @@ module.exports = {
   start() {
     process.env.DEBUG_MODE && console.log("App server: STARTING");
 
-    process.env.PUBLIC_DIR = "./test/public";
-    process.env.API_URL = "http://localhost:1234";
+    process.env.PUBLIC_DIR = process.env.PUBLIC_DIR || "./test/public";
+    process.env.API_URL    = process.env.API_URL || "http://localhost:1234";
 
     return new Promise((fulfill, reject) =>
       this.childProcess =
