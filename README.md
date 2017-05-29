@@ -78,9 +78,9 @@ You must show the car listing's id, image, brand, model, year.
 You also must enforce this points:
 
   1. **The page must be a [single page application][109]:**
-    This means the page may consist on a single file index.html,
-    and clicking a link muest not trigger a page reload.
-    Instead, all data needed to render the must be loaded via AJAX and used to update the page.
+    This means the page may consist of a single file index.html,
+    and clicking on a link must not trigger a page reload.
+    Instead, all needed data must be loaded via AJAX and used to render the page.
 
   2. **Tests must pass:**
     If your site fulfills the requirements, automated tests should pass.
