@@ -6,7 +6,7 @@ It's built with [brunch][1] and [vue.js 2.0][2] and tested with [nightwatch.js][
 These software choices are meant for you to start quick and go through the test assigments rapidly, but you may use whatever framework or library you see fit.
 
 You may for example dump the app itself but want to keep the tests.
-In that you can keep the `nightwatch.json` file and the `test` folder,
+In that case you can keep the `nightwatch.json` file and the `test` folder,
 and ensure this npm packages are in your `pagackage.json`'s `devDependencies`:
 
     "lodash": "^4.17.4",
@@ -22,48 +22,58 @@ More info below.
 ### Topic
 
 You will be required to replicate the most basic features of our car listing list and detail pages,
-available in https://yavende.com/avisos and https://yavende.com/avisos/<carListingId> respectively.
+available at https://yavende.com/avisos and https://yavende.com/avisos/<carListingId> respectively.
 
 For this purpose you will have to make usage of our API hosted at https://api.yavende.com, the same we use for powering https://yavende.com.
 
-Aditionally, to enable automated testing of your page, some arbitrary requirements about your page must be met.
-This will be marked with ***bold and italic***
+Aditionally, to enable automated testing of your page, some arbitrary requirements must be met.
+These will be marked with __*bold and italic*__
 
 ### Requirements
 
-Your app must serve this routes:
+#### `/avisos`
 
-- `/avisos`
-  - **Should list carlistings**: For each car listing in the response from the API endpoint ([/v1/car_listings][104], 8 cars per page),
-    you must show the car listing's id, image, brand, model, year.
-    ***Each element in the list must have the id property set to "car-listing-${carListing.id}", for example: "car-listing-5792"***.
+- Should list carlistings
 
-  - **Should allow pagination**: The page must have a button named "Next Page",
-    ***with an id "next-page-button"***,
-    wich loads the next page from the API using the `page` param. For example, [/v1/car_listings?page=2][105]. First page is 1.
+For each car listing in the response from the API endpoint ([/v1/car_listings][104], 8 cars per page),
+you must show the car listing's id, image, brand, model, year.
+*__Each element in the list must have the id property set to "car-listing-${carListing.id}", for example: "car-listing-5792"__*.
 
-  - **Should allow filtering by brand**: There must be a select for car brands ***with id "car-brand-select"***.
-    These brands are available at the API endpoint [/v1/car_brands][106].
-    If a brand is selected, listings are updated to show filtered carListings.
-    Use the param `car_brand_id` to filter the API results.
-    For example, this query returns Chevrolet cars: [/v1/car_listings?car_brand_id=45][107].
+- Should allow pagination
 
-  - **Should allow filtering by brand and model**:
-    There must be a select or car models ***with id "car-model-select"***.
-    There models are at [/v1/car_models?car_brand_id=x][108].
-    Each time a car brand is selected, the select for models should be populated with the proper models.
-    If a model is choosen, update car listings to show them filtered by the selected brand and model.
-    To do this use the [/v1/car_listings][104] API endpoint with params `car_brand_id` and `car_model_id`.
-    For example, to get all Chevrolet Agile you can use [/v1/car_listings?car_brand_id=45?car_model_id=674][110].
+The page must have a button named "Next Page", *__with an id "next-page-button"__*,
+which loads the next page from the API using the `page` param. For example, [/v1/car_listings?page=2][105]. First page is 1.
 
-  - **Should link to /avisos/:id**
-    Given a car listing card is clicked, you should redirect to the detail page for the given car using the path "/avisos/:id".
-    ***For testing purposes, each car listing in the list must have the id property set to "car-listing-${carListing.id}, and trigger the redirect on click***.
+- Should allow filtering by brand
 
-- `/avisos/:id`
+There must be a select for car brands *__with id "car-brand-select"__*.
+These brands are available at the API endpoint [/v1/car_brands][106].
+If a brand is selected, listings are updated to show filtered carListings.
+Use the param `car_brand_id` to filter the API results.
+For example, this query returns Chevrolet cars: [/v1/car_listings?car_brand_id=45][107].
 
-  - **Should be navigatable**: If I open the browser directly on /avisos/:id, the detail for the carListing with that id should be shown.
-    You must show the car listing's id, image, brand, model, year.
+- Should allow filtering by brand and model:
+
+There must be a select for car models *__with id "car-model-select"__*.
+There models are available at [/v1/car_models?car_brand_id=x][108].
+Each time a car brand is selected, the select for models should be populated with the proper models.
+If a model is choosen, update car listings to show them filtered by the selected brand and model.
+To do this use the [/v1/car_listings][104] API endpoint with params `car_brand_id` and `car_model_id`.
+For example, to get all Chevrolet Agile you can use [/v1/car_listings?car_brand_id=45?car_model_id=674][110].
+
+- Should link to /avisos/:id
+
+Given a car listing card is clicked, you should redirect to the detail page for the given car using the path "/avisos/:id".
+For testing purposes, *__each car listing in the list must have the id property set to "car-listing-${carListing.id}, and trigger the redirect on click__*.
+
+#### `/avisos/:id`
+
+- Should be navigatable
+
+If I open the browser directly on `/avisos/:id`, the detail for the carListing with that id should be shown.
+You must show the car listing's id, image, brand, model, year.
+
+---
 
 You also must enforce this points:
 
@@ -104,7 +114,7 @@ This is a mocked service that mimics our API for testing.
 The test suite will try to run the brunch server by default and perform the automated tests against that server that runs on localhost:3333.
 
 ~~~bash
-$ # run the tets
+$ # run the tests
 $ nightwatch
 ~~~
 
@@ -120,7 +130,7 @@ $ static --spa -a 0.0.0.0 ./public
 $ DISABLE_APP_SERVER=true APP_HOST=http://localhost:8080 nightwatch
 ~~~
 
-As mentioned before, ***tests should pass***.
+As mentioned before, *__tests should pass__*.
 If your site fulfills the requirements, automated tests should pass.
 If you feel like you completed the requirements but tests don't give you the green light,
 feel free to edit the tests, open an issue, or even [email us](mailto:nicolas@yavende.com).
