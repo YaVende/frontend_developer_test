@@ -89,7 +89,7 @@
       getCarBrands() {
         CarBrand
           .query()
-          .then(resp => this.carBrands = resp.data.car_brands)
+          .then(resp => this.carBrands = resp.data);
       },
 
       getCarModels() {
@@ -99,13 +99,13 @@
 
         CarModel
           .query({params})
-          .then(resp => this.carModels = resp.data.car_models)
+          .then(resp => this.carModels = resp.data);
       },
 
       onCarBrandIdChange() {
         this.page = 1;
-        this.getCarListings()
-        this.getCarModels()
+        this.getCarListings();
+        this.getCarModels();
       },
 
       onCarModelIdChange() {

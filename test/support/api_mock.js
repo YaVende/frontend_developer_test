@@ -4,12 +4,12 @@ const CustomServerMock = require('./custom_server_mock');
 module.exports =
   new CustomServerMock()
     .on({
-      path: '/car_brands',
+      path: '/v1/car_brands',
       jsonFile: 'car_brands_index'
     })
 
     .on({
-      path: '/car_models',
+      path: '/v1/car_models',
       matcher: req =>
         req.query.car_brand_id === "45" &&
         'car_models_index_car_brand_id_45'

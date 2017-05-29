@@ -43,14 +43,14 @@ Your app must serve this routes:
     wich loads the next page from the API using the `page` param. For example, [/v1/car_listings?page=2][105]. First page is 1.
 
   - **Should allow filtering by brand**: There must be a select for car brands ***with id "car-brand-select"***.
-    These brands are available at the API endpoint [/car_brands][106].
+    These brands are available at the API endpoint [/v1/car_brands][106].
     If a brand is selected, listings are updated to show filtered carListings.
     Use the param `car_brand_id` to filter the API results.
     For example, this query returns Chevrolet cars: [/v1/car_listings?car_brand_id=45][107].
 
   - **Should allow filtering by brand and model**:
     There must be a select or car models ***with id "car-model-select"***.
-    There models are at [/car_models?car_brand_id=x][108].
+    There models are at [/v1/car_models?car_brand_id=x][108].
     Each time a car brand is selected, the select for models should be populated with the proper models.
     If a model is choosen, update car listings to show them filtered by the selected brand and model.
     To do this use the [/v1/car_listings][104] API endpoint with params `car_brand_id` and `car_model_id`.
@@ -79,10 +79,8 @@ You also must enforce this points:
 
 ## Support and documentation
 
-We will soon document our API with swaggger.io/.
+You can find a full documentation for our API at https://api.yavende.com/docs
 
-
- 
 ## Getting started
 * Install (if you don't have them):
     * [Node.js](http://nodejs.org): `brew install node` on OS X
@@ -136,8 +134,8 @@ feel free to edit the tests, open an issue, or even [email us](mailto:nicolas@ya
 
 [104]: https://api.yavende.com/v1/car_listings
 [105]: https://api.yavende.com/v1/car_listings?page=2
-[106]: https://api.yavende.com/car_brands
+[106]: https://api.yavende.com/v1/car_brands
 [107]: https://api.yavende.com/v1/car_listings?car_brand_id=45
-[108]: https://api.yavende.com/car_models?car_brand=45
+[108]: https://api.yavende.com/v1/car_models?car_brand=45
 [109]: https://en.wikipedia.org/wiki/Single-page_application
 [110]: https://api.yavende.com/v1/car_listings?car_brand_id=45?car_model_id=674
