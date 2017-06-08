@@ -5,7 +5,7 @@
       | {{ carListing.car.car_brand.name }} {{ carListing.car.car_model.name }} {{ carListing.car.year }}
     hr
 
-    img(:src='carListing.car.images[0].file.url')
+    img(:src='carListing.car.images[0].file_versions.large')
 </template>
 
 <script>

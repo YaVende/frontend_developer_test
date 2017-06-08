@@ -39,7 +39,7 @@
         .car-listing-card__header Aviso \#{{ cl.id }}
         .car-listing-card__body
           .car-listing-card__body__image-wrapper
-            img(:src="cl.car.images[0].file.url")
+            img(:src="cl.car.images[0].file_versions.medium")
 
           .car-listing-card__body__desc
             strong {{ cl.car.car_brand.name }} {{ cl.car.car_model.name }} {{ cl.car.year }}
