@@ -3,21 +3,18 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import 'dependency_manifest';
 
-import App from 'src/app.vue';
-
-import CarListingList from 'src/car_listing/list.vue';
-import CarListingDetail from 'src/car_listing/detail.vue';
+import App from 'components/app.vue';
 
 const router = new VueRouter({
   mode: 'history',
   routes: [{
     name:      'carListings.index',
     path:      '/avisos',
-    component: CarListingList
+    component: {template: '<p>Listado</p>'}
   }, {
     name:      'carListings.show',
     path:      '/avisos/:id',
-    component: CarListingDetail
+    component: {template: '<p>Detalle</p>'}
   }]
 });
 
