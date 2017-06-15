@@ -17,6 +17,12 @@ and ensure this npm packages are in your `pagackage.json`'s `devDependencies`:
 
 More info below.
 
+## How to complete the test
+- Fork and clone the repo
+- Complete the assigments
+- Make sure the automated tests give the green light
+- Commit and push
+
 ## Assignment
 
 ### Topic
